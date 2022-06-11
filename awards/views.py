@@ -20,3 +20,9 @@ def home(request):
 
 def project(request):
     return render(request, 'main/project.html')
+
+def postProject(request):
+    return render(request, 'main/post_project.html')
+
+def viewProfile(request):
+    return render(request, 'main/view_profile.html')
