@@ -15,9 +15,10 @@
 
          <nav id="navbar" class="navbar">
              <ul>
+                 {% if user.is_authenticated %}
                  <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                  <li><a class="nav-link scrollto" href="#about">Post Project</a></li>
-                 <li><a class="nav-link scrollto" href="#services">Register</a></li>
+                
 
                  <li class="dropdown"><a href="#"><span><i class="bi bi-person-circle"
                                  style="font-size: 1.4rem;"></i></span> <i class="bi bi-chevron-down"></i></a>
@@ -27,6 +28,11 @@
 
                      </ul>
                  </li>
+
+                 {% else %}
+                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                  <li><a class="nav-link scrollto" href="/login">Register</a></li>
+                  {% endif %}
 
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
