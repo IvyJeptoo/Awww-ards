@@ -1,0 +1,45 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="section">
+    <div class="phone">
+        <div class="bg"></div>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 " style="margin-top: 7rem;">
+                <div class="card ">
+
+                    <div class="card-body mb-1 ml-3">
+                        <form action="" method="post" novalidate>
+                            <div class="logo">
+                                <h3 class="text-center mb-5"> <strong>Login</strong> </h3>
+                                
+                            </div>
+                            {% csrf_token%} {% bootstrap_form form layout='inline' %}
+                            <a href="/home">
+                                <button type="submit" class="btn btn-dark btn-sm D-block mx-auto">
+                                    Log In</button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body mt-3 mb-3 mr-2 ml-4">
+                        Don't have an account? <a href="/signup">Sign up</a>
+                    </div>
+                </div>
+                <br><br><br>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
