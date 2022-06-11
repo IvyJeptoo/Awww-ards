@@ -17,3 +17,6 @@ def sign_up(request):
 
 def home(request):
     return render(request, 'main/home.html')
+
+def project(request):
+    return render(request, 'main/project.html')
