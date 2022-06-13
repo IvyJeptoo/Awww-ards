@@ -1,19 +1,49 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.exceptions import ObjectDoesNotExist
+
 # from django_countries.fields import CountryField
 
 # Create your models here.
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',null=True)
-    profile_picture = CloudinaryField('image',default='http://res.cloudinary.com/dim8pysls/image/upload/v1639001486/x3mgnqmbi73lten4ewzv.png')
+    photo = CloudinaryField('image',default='http://res.cloudinary.com/dim8pysls/image/upload/v1639001486/x3mgnqmbi73lten4ewzv.png')
     bio = models.CharField(max_length=300) 
     
-    
-    
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+            
+            
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
+    @classmethod
+    def profile(cls):
+        profiles = cls.objects.all()
+        return profiles
+
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            return self.photo.url
+
     def save_profile(self):
-        self.save()
+        self.user
+
+    def __str__(self):
+        return self.bio
+
+    @classmethod
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name).all() 
+    
+    
 
     def delete_profile(self):
         self.delete()
@@ -24,8 +54,8 @@ class Profile(models.Model):
         category.name = profile.name
         category.save_profile()
         
-    def __str__(self):
-        return self.bio
+
+    
     
     
 class Category(models.Model):
@@ -61,6 +91,12 @@ class Project(models.Model):
     image = CloudinaryField('image')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     # country = CountryField(blank_label='(select country)', default='KE')
+    
+    
+    @classmethod
+    def get_by_author(cls, author):
+        projects = cls.objects.filter(author=author)
+        return projects
     
     
     
