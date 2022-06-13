@@ -18,3 +18,15 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['photo', 'bio']
+        
+class PostProjectForm(forms.ModelForm):
+    title = forms.CharField()
+    category = forms.CharField()
+    link =  forms.URLField()
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+    image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+    
+
+    class Meta:
+        model = Profile
+        fields = ['title', 'category','link','description','image']

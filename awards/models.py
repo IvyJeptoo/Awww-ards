@@ -86,6 +86,7 @@ class Category(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=300,blank=False)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE, default=1)
     link = models.URLField(blank=False)
     description = models.TextField(blank=False)
     image = CloudinaryField('image')
