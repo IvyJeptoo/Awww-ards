@@ -1,3 +1,5 @@
+from multiprocessing import context
+from unicodedata import category
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
@@ -22,10 +24,35 @@ def home(request):
     return render(request, 'main/home.html')
 
 def project(request):
-    return render(request, 'main/project.html')
+    categories = Category.objects.all()
+    context = {'categories':categories}
+    return render(request, 'main/project.html', context)
 
 def postProject(request):
-    return render(request, 'main/post_project.html')
+    categories = Category.objects.all()
+    
+    if request.method == 'POST':
+        data = request.POST
+        image = request.Files.GET('image')
+        
+        if data['category'] != 'none':
+            category = Category.objects.get(id=data['category'])
+            
+        else:
+            category = None
+            
+        project = Project.objects.create(
+            category=category,
+            image=image,
+            description=data['description'],
+            link=data['link'],
+            title=data['title']          
+            
+        )
+        return redirect ('project')
+    context = {'categories':categories}
+    project_form = PostProjectForm()
+    return render(request, 'main/post_project.html',context)
 
 
 @login_required
