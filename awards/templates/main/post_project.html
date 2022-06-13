@@ -1,1 +1,32 @@
-<h3>Post here</h3>
+
+{%extends 'main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container " style="height: 73.5vh;">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <div class="mt-4" >
+
+
+                <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                    <h3 style="text-align: center;"> <strong>Create Post</strong> </h3>
+                    {%csrf_token%}
+
+                    
+                    <button type=submit class="btn btn-sm btn-secondary" style="margin-left: 5px;" value="Upload">choose
+                        file</button>
+                </form>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+{% endblock %}
