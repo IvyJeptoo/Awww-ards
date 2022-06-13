@@ -9,13 +9,13 @@
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img 
-                                src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="...">
+                            <img style="height: 250px; width: 250px; margin-left: 5rem; border-radius: 50%;"
+                                src="{{user.profile.photo.url}}" alt="...">
                         </div>
                         <div class="col-lg-6 px-xl-10">
                             <div class=" d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
-                                style="padding: 2rem; background: #344341; margin-bottom: 1rem;">
-                                <h3 class="h2 text-white mb-0">John mark Doe Kyzer</h3>
+                                style="padding: 2rem; background: #344341; margin-bottom: 1rem; min-width: 20rem;">
+                                <h3 class="h2 text-white mb-0">{{user.username}}</h3>
                                 <button type="button" class="btn btn-outline-light btn-sm mt-2" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">Edit Profile</button>
                             </div>
@@ -33,12 +33,33 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
+                                            <form action="" method="post" novalidate enctype="multipart/form-data"
+                                                class="mr-4 mt-4 ml-4 mb-4">
+                                                {% csrf_token %}
+                                                <div class="form-row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+
+                                                            <label class="small mb-1">Change Profile Picture:</label>
+                                                            {{ profile_form.photo }}
+                                                        </div>
+                                                        <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+                                                    </div>
+                                                </div>
+                                                <br><br>
+                                                <div class="modal-footer">
+                                                <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+                                                <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+                                                </div>
+
+
+                                            </form>
                                             
-                                            <button type="button" class="btn btn-dark">Update</button>
                                         </div>
+                                        
+                                            
+                                            
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -48,20 +69,15 @@
 
                             <ul class="list-unstyled mb-1-9">
                                 <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Position:</span> Coach
-                                </li>
-                                <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Experience:</span> 10
-                                    Years</li>
+                                        class="display-26 text-secondary me-2 font-weight-600">Bio:</span>{{user.profile.bio}}
+                                </li>                                
                                 <li class="mb-2 mb-xl-3 display-28"><span
                                         class="display-26 text-secondary me-2 font-weight-600">Email:</span>
                                     {{user.email}}</li>
                                 <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Website:</span>
+                                        class="display-26 text-secondary me-2 font-weight-600">Projects:</span>
                                     www.example.com</li>
-                                <li class="display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 507 - 541 -
-                                    4567</li>
+                                
                             </ul>
                             
                         </div>
@@ -84,7 +100,7 @@
                     </div>
                     <div class="portfolio-links">
                         <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: black; font-size: 1.5rem;"></i>
+                            style="color: white; font-size: 1.5rem;"></i>
 
                         <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
@@ -104,7 +120,7 @@
                     </div>
                     <div class="portfolio-links">
                         <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: black; font-size: 1.5rem;"></i>
+                            style="color: white; font-size: 1.5rem;"></i>
 
                         <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
@@ -124,7 +140,7 @@
                     </div>
                     <div class="portfolio-links">
                         <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: black; font-size: 1.5rem;"></i>
+                            style="color: white; font-size: 1.5rem;"></i>
 
                         <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
