@@ -26,3 +26,7 @@ def postProject(request):
 
 def viewProfile(request):
     return render(request, 'main/view_profile.html')
+
+def editProfile(request):
+    return render(request, 'main/edit_profile.html')
+

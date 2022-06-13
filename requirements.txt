@@ -12,3 +12,5 @@ django-bootstrap4==22.1
 psycopg2==2.9.3
 psycopg2-binary==2.9.3
 python-decouple==3.6
+cloudinary==1.29.0
+django-countries==5.5

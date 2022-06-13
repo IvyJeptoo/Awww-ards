@@ -8,10 +8,7 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: #1bbca3;
-}
+
 
 a:hover {
   color: #2ae0c4;
@@ -74,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  text-decoration: none;
 }
 #header .logo img {
   padding: 0;
@@ -117,6 +115,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  text-decoration: none;
 }
 .navbar a i, .navbar a:focus i {
   font-size: 12px;
@@ -479,7 +478,7 @@ section {
 }
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(88, 113, 109, 0.6);
+  /* background: rgba(88, 113, 109, 0.6); */
   position: absolute;
   left: 30px;
   right: 30px;
@@ -605,11 +604,13 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
+  
   background: #344341;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
 }
+
 #footer .copyright {
   text-align: center;
   padding-top: 30px;
@@ -620,3 +621,9 @@ section {
   font-size: 13px;
   color: #fff;
 }
+a {
+  text-decoration: none;
+  
+  color: #1bbca3;
+}
+/* GRID */
