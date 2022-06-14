@@ -415,9 +415,9 @@ section {
   padding: 60px 0;
 }
 
-.section-bg {
-  background-color: #f2f5f4;
-}
+/* .section-bg { */
+  /* background-color: #f2f5f4; */
+/* } */
 
 .section-title {
   text-align: center;
