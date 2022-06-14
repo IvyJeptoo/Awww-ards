@@ -2,15 +2,18 @@
 {%extends 'main/base.html' %}
 {% load static %}
 {% block content %}
+<section id="portfolio" class="portfolio section-bg">
+    
 <div class="container" style="margin-bottom: 7rem;">
     <div class="row">
         <div class="col-lg-12 mb-4 mb-sm-5">
             <div class="card card-style1 border-0">
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                     <div class="row align-items-center">
+                        
                         <div class="col-lg-6 mb-4 mb-lg-0">
                             <img style="height: 250px; width: 250px; margin-left: 5rem; border-radius: 50%;"
-                                src="{{user.profile.photo.url}}" alt="...">
+                                src="{{user.profile.photo.url}}" alt="..." >
                         </div>
                         <div class="col-lg-6 px-xl-10">
                             <div class=" d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
@@ -75,8 +78,8 @@
                                         class="display-26 text-secondary me-2 font-weight-600">Email:</span>
                                     {{user.email}}</li>
                                 <li class="mb-2 mb-xl-3 display-28"><span
-                                        class="display-26 text-secondary me-2 font-weight-600">Projects:</span>
-                                    www.example.com</li>
+                                        class="display-26 text-secondary me-2 font-weight-600">Total Projects:</span>{{user.profile.project.count}}
+                                </li>
                                 
                             </ul>
                             
@@ -85,75 +88,58 @@
                 </div>
             </div>
         </div>
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container">
+        
         <div class="row portfolio-container">
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                        class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <p>App</p>
-                    </div>
-                    <div class="portfolio-links">
-                        <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: white; font-size: 1.5rem;"></i>
+              {% for project in projects %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                  <div class="portfolio-wrap">
+                      <img style="height: 250px; width: 350px;" src="{{ project.image.url }}" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                          <h4>{{ project.title }}</h4>
+                          <p>{{ project.category }}</p>
+                      </div>
+                      <div class="portfolio-links">
+                          <a href="{{ project.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox"
+                              title="Landing page image"><i class="bx bx-plus"></i></a>
+                          <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                          <a href="" title="More details" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
+                                  style="font-size: 1.5rem;"></i></a>
+                      </div>
+                  </div>
+              </div>
+              ​
+              ​
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{ project.title }}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <img src="{{ project.image.url }}" class="img-fluid" alt="">
+                              <hr>
+                              <p><b>Description:</b> {{ project.description }}</p>
+                              <p><b>Live link:</b> {{ project.link }}</p>
+                              <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-                        <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                            data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                                class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                        class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <p>App</p>
-                    </div>
-                    <div class="portfolio-links">
-                        <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: white; font-size: 1.5rem;"></i>
-
-                        <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                            data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                                class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                        class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <p>App</p>
-                    </div>
-                    <div class="portfolio-links">
-                        <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill"
-                            style="color: white; font-size: 1.5rem;"></i>
-
-                        <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                            data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                                class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                </div>
-            </div>
+              
+              {% endfor %}
+            
+            
+           
         </div>
             </div>
         </section>
     
-    </div>
-
-</div>
+ 
 {% endblock %}

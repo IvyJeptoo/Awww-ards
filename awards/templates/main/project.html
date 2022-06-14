@@ -17,9 +17,17 @@
          <div class="row">
              <div class="col-lg-12 d-flex justify-content-center">
                  <ul id="portfolio-flters">
-                     <li data-filter="*" class="filter-active">All</li>
+                     <li data-filter="*" class="filter-active">
+                         <a href="{% url 'project' %}">
+                             All
+                         </a>
+                         
+                         </li>
                      {% for category in categories %}
-                     <li data-filter=".filter-app">{{ category.name }}</li>
+                     <li data-filter=".filter-app"> <a
+                             href="{% url 'project' %}?category={{category.name}}">{{ category.name }}
+                             </a>
+                            </li>
                      {% endfor %}
 
                  </ul>
@@ -28,88 +36,52 @@
 
          <div class="row portfolio-container">
 
+            <hr>
+
+            {% for project in projects %}
+
              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                  <div class="portfolio-wrap">
-                     <img data-bs-toggle="modal" data-bs-target="#exampleModal"
-                         src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                         class="img-fluid" alt="">
+                     <img style="height: 250px; width: 350px;" src="{{ project.image.url }}" class="img-fluid" alt="">
                      <div class="portfolio-info">
-                         <h4>App 1</h4>
-                         <p>App</p>
+                         <h4>{{ project.title }}</h4>
+                         <p>{{ project.category }}</p>
                      </div>
                      <div class="portfolio-links">
-                         <i  data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-eye-fill" style="color: white; font-size: 1.5rem;"></i>
-                         
-                         <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                                 class="bx bx-plus"></i></a>
-                         <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                         <a href="{{ project.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox"
+                             title="Landing page image"><i class="bx bx-plus"></i></a>
+                         <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                         <a href="" title="More details" data-bs-toggle="modal"
+                             data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
+                                 style="font-size: 1.5rem;"></i></a>
                      </div>
                  </div>
              </div>
-
-             <!-- Button trigger modal -->
-             
-
+             ​
+             ​
              <!-- Modal -->
-             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                 <div class="modal-dialog modal-dialog-centered">
+                 <div class="modal-dialog">
                      <div class="modal-content">
                          <div class="modal-header">
-                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                             <h5 class="modal-title" id="exampleModalLabel">{{ project.title }}</h5>
                              <button type="button" class="btn-close" data-bs-dismiss="modal"
                                  aria-label="Close"></button>
                          </div>
                          <div class="modal-body">
-                              
-                             
+                             <img src="{{ project.image.url }}" class="img-fluid" alt="">
+                             <hr>
+                             <p><b>Description:</b> {{ project.description }}</p>
+                             <p><b>Live link:</b> {{ project.link }}</p>
+                             <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
                          </div>
-                         <div class="modal-footer">
-                             
-                             <button type="button" class="btn btn-primary">Save changes</button>
-                         </div>
                      </div>
                  </div>
              </div>
 
-
-
-
-
-             <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                 <div class="portfolio-wrap">
-                     <img src="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                         class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                         <h4>Web 3</h4>
-                         <p>Web</p>
-                     </div>
-                     <div class="portfolio-links">
-                         <a href="https://cdn.pixabay.com/photo/2021/11/30/08/24/strawberries-6834750__480.jpg"
-                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i
-                                 class="bx bx-plus"></i></a>
-                         <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                     </div>
-                 </div>
-             </div>
-
-             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                 <div class="portfolio-wrap">
-                     <img src="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg" class="img-fluid"
-                         alt="">
-                     <div class="portfolio-info">
-                         <h4>App 2</h4>
-                         <p>App</p>
-                     </div>
-                     <div class="portfolio-links">
-                         <a href="https://cdn.pixabay.com/photo/2022/05/26/19/14/child-7223632__340.jpg"
-                             data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i
-                                 class="bx bx-plus"></i></a>
-                         <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                     </div>
-                 </div>
-             </div>
+            
+             {% endfor %}
 
 
 

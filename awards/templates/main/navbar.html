@@ -8,8 +8,8 @@
              <h1 class="text-light"><a href="index.html"><span>Awww-ards</span></a></h1>
              
          </div>
-         <form class="d-flex">
-             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+         <form action="{% url 'searchProject' %}" class="d-flex">
+             <input name="search-project" class="form-control me-2" type="search" placeholder="Search by category" aria-label="Search">
 
          </form>
 

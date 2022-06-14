@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container" style="margin-bottom: 5.1rem;">
+    <div class="row">
+        <section id="portfolio" class="portfolio section-bg" style="min-height: 60vh">
+            <div class="container">
+                {% if results %}
+                <h5 class="text-muted">Found {{ results|length }} project{{ results|pluralize }}</h5>
+                {% else %}
+                <h5 class="text-muted">Found 0 projects with {{ message }} as the category name</h5>
+                {% endif %}
+                <br>
+                {% if results %}
+                <div class="row portfolio-container">
+                    {% for project in results %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{ project.image.url }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ project.title }}</h4>
+                                <p>{{ project.category }}</p>
+                            </div>
+                            <div class="portfolio-links">
+                                <a href="{{ project.image.url }}" data-gallery="portfolioGallery"
+                                    class="portfolio-lightbox" title="Landing page image"><i class="bx bx-plus"></i></a>
+                                <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                                <a href="" title="More details" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
+                                        style="font-size: 1.5rem;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    ​
+                    ​
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ project.title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ project.image.url }}" class="img-fluid" alt="">
+                                    <hr>
+                                    <p><b>Description:</b> {{ project.description }}</p>
+                                    <p><b>Live link:</b> {{ project.link }}</p>
+                                    <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
