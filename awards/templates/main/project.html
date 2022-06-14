@@ -1,6 +1,8 @@
 {%extends 'main/base.html' %}
 {% load bootstrap4 %}
 {% load static %}
+{% load ratings %}
+
 
 
 
@@ -27,8 +29,8 @@
                          </li>
                      {% for category in categories %}
                      <li data-filter=".filter-app"> <a
-                             href="{% url 'project' %}?category={{category.name}}">{{ category.name }}
-                             </a>
+                             href="">{{ form.category }}
+                            
                             </li>
                      {% endfor %}
 
@@ -41,30 +43,71 @@
             <hr>
 
             {% for project in projects %}
+            
+
 
              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                  <div class="portfolio-wrap">
                      <img style="height: 250px; width: 350px;" src="{{ project.image.url }}" class="img-fluid" alt="">
                      <div class="portfolio-info">
                          <h4>{{ project.title }}</h4>
-                         <p>{{ project.category }}</p>
+                         <p>{{ project.category }}</p>                       
+                         
                      </div>
                      <div class="portfolio-links">
+                         
                          <a href="{{ project.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox"
-                             title="Landing page image"><i class="bx bx-plus"></i></a>
-                         <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>
+                             title="Landing page image"><i class="bx bx-plus"></i></a> &nbsp;&nbsp;
+                         <a href="{{ project.link }}" title="Live Link"><i class="bx bx-link"></i></a>&nbsp;&nbsp;
                          <a href="" title="More details" data-bs-toggle="modal"
                              data-bs-target="#exampleModal{{ project.id }}"><i class="bi bi-eye"
-                                 style="font-size: 1.5rem;"></i></a>
+                                 style="font-size: 1.5rem;"></i></a>&nbsp;&nbsp;
+                        <a href="" title="More details" data-bs-toggle="modal"
+                            data-bs-target="#exampleModa"><i class="bx bx-star"
+                                style="font-size: 1.5rem;"></i></a>
+                                
+                        
+                        
                      </div>
                  </div>
              </div>
-             ​
-             ​
+             <!--  Rating Modal -->
+             <div class="modal fade" id="exampleModa" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                 <div class="modal-dialog" >
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">Rate Project</h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                 aria-label="Close"></button>
+                         </div>
+                         <div class="modal-body">                           
+                             <strong>
+                                 <p>Rate Usability</p>
+                             </strong>
+                             
+                             {% ratings project %} <br> <br>
+                             <strong>
+                                 <p>Rate Design</p> 
+                             </strong>
+
+                             {% ratings project %} <br> <br>
+                             <strong>
+                                 <p>Rate Content</p>
+                             </strong>
+
+                             {% ratings project %}
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+             
+             
              <!-- Modal -->
              <div class="modal fade" id="exampleModal{{ project.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                 <div class="modal-dialog">
+                 <div class="modal-dialog" style="width: 80%;">
                      <div class="modal-content">
                          <div class="modal-header">
                              <h5 class="modal-title" id="exampleModalLabel">{{ project.title }}</h5>
@@ -72,11 +115,16 @@
                                  aria-label="Close"></button>
                          </div>
                          <div class="modal-body">
-                             <img src="{{ project.image.url }}" class="img-fluid" alt="">
+                             <img  src="{{ project.image.url }}" class="img-fluid" alt="">
                              <hr>
                              <p><b>Description:</b> {{ project.description }}</p>
-                             <p><b>Live link:</b> {{ project.link }}</p>
+                             <p><b>Category:</b> {{ project.category }}</p>
+                             
+                                 <p><b>Live link:</b><a href="{{ project.link }}">{{ project.link }}</a> </p>
+                             </a>
+                             <hr>
                              <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
+                             
                          </div>
                      </div>
                  </div>

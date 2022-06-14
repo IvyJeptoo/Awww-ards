@@ -125,7 +125,10 @@
                               <img src="{{ project.image.url }}" class="img-fluid" alt="">
                               <hr>
                               <p><b>Description:</b> {{ project.description }}</p>
-                              <p><b>Live link:</b> {{ project.link }}</p>
+                              <p><b>Category:</b> {{ project.category }}</p>
+
+                              <p><b>Live link:</b><a href="{{ project.link }}">{{ project.link }}</a> </p>
+                              </a>
                               <p class="text-muted fst-italic"><b>~ </b> {{project.pub_date}}</p>
                           </div>
                       </div>
