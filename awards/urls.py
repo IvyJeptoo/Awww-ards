@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 
 urlpatterns=[
@@ -8,4 +8,5 @@ urlpatterns=[
     path('viewProfile',views.viewProfile, name = 'viewProfile'),
     path('searchProject',views.searchProject, name = 'searchProject'),
     path('signup', views.sign_up),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
