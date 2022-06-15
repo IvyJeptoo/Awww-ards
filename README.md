@@ -46,7 +46,7 @@ Ivy Jeptoo
 - User can view specific project details.
 
 
-## <a href="https://ivyinsta.herokuapp.com/">Live preview of the site</a>
+## <a href="https://ivyawwwards.herokuapp.com/project">Live preview of the site</a>
 
 ## Set up instructions and installations
 
