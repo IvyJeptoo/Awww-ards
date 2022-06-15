@@ -1,13 +1,28 @@
-from multiprocessing import context
-from unicodedata import category
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import *
 
 # Create your views here.
+class ProfileList(APIView):
+    def get(self,request,format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile,many=True)
+        return Response(serializers.data)
+    
+    
+class ProjectList(APIView):
+    def get(self,request,format=None):
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project,many=True)
+        return Response(serializers.data)
+    
 
 def sign_up(request):
     if request.method == 'POST':
