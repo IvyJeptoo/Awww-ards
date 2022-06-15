@@ -1,30 +1,30 @@
- {% load bootstrap5 %}
  {% load static %}
  <!-- navbar -->
- <header id="header" class="d-flex align-items-center">
-     <div class="container d-flex align-items-center justify-content-between">
+ <header id="header" class="d-flex align-items-center"
+     style="background-color: white; ">
+     <div class="container d-flex align-items-center justify-content-between" >
 
          <div class="logo">
              <h1 class="text-light"><a href="index.html"><span>Awww-ards</span></a></h1>
-             
+
          </div>
-         <form action="{% url 'searchProject' %}" class="d-flex">
-             <input name="search-project" class="form-control me-2" type="search" placeholder="Search by category" aria-label="Search">
+         <form class="d-flex">
+             <input class="form-control me-2" type="search" placeholder="Search by category" aria-label="Search">
 
          </form>
 
-         <nav id="navbar" class="navbar">
+         <nav id="navbar" class="navbar" >
              <ul>
                  {% if user.is_authenticated %}
                  <li><a class="nav-link scrollto " href="/project">Home</a></li>
                  <li><a class="nav-link scrollto" href="/postProject">Post Project</a></li>
-                
+
 
                  <li class="dropdown"><a href="#"><span><i class="bi bi-person-circle"
                                  style="font-size: 1.4rem;"></i></span> <i class="bi bi-chevron-down"></i></a>
                      <ul>
                          <li><a style="text-decoration: none;" href="/viewProfile">Profile</a></li>
-                         <li><a style="text-decoration: none;"  href="/logout">Logout</a></li>
+                         <li><a style="text-decoration: none;" href="/logout">Logout</a></li>
 
                      </ul>
                  </li>
@@ -34,16 +34,16 @@
                  <li class="dropdown"><a href="#"><span>Register</i></span> <i class="bi bi-chevron-down"></i></a>
                      <ul>
                          <li><a style="text-decoration: none;" href="/login">Login</a></li>
-                         <li><a style="text-decoration: none;" href="/">Sign Up</a></li>
+                         <li><a style="text-decoration: none;" href="/signup">Sign Up</a></li>
 
                      </ul>
                  </li>
-                  
-                  {% endif %}
+
+                 {% endif %}
 
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
-         </nav>      
+         </nav>
          <!-- end.navbar -->
 
      </div>

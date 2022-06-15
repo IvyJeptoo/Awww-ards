@@ -1,6 +1,4 @@
 {% load static %}
-{% load ratings %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,45 +11,43 @@
     <meta content="" name="keywords">
 
     {% block styles %}
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
-    
-    
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    
-    
+
+
     <!-- Google Fonts -->
     <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-    
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
 
-    
+
     {% endblock %}
 
-   
+
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    <section style="height: 150vh;" id="hero">
         <div class="hero-container">
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
@@ -61,14 +57,13 @@
 
                     <!-- Slide 1 -->
                     <div class="carousel-item active">
-                        <div class="carousel-background"><img src="" alt=""></div>
+                        <div class="carousel-background"><img
+                                src="https://images.pexels.com/photos/268832/pexels-photo-268832.jpeg?cs=srgb&dl=pexels-pixabay-268832.jpg&fm=jpg"
+                                alt=""></div>
                         <div class="carousel-container">
                             <div class="carousel-content">
-                                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Shuffle</span></h2>
-                                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                    aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                    mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                    vel. Minus et tempore modi architecto.</p>
+                                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Awww-ards:-)</span></h2>
+                                <p class="animate__animated animate__fadeInUp">A site that allows you to showcase your projects for rating, all based under three categories, <strong>Design, Content,Usability</strong>. </p>
                                 <a style="text-decoration: none;" href="/login"
                                     class="btn-get-started animate__animated animate__fadeInUp scrollto">Post
                                     Project</a>
@@ -87,16 +82,13 @@
     <!-- End Hero -->
 
 
-    {% include 'main/project.html' %}
+   
 
 
-{% block scripts %}
-<script src="{% static 'js/index.js' %}"></script>
-{% endblock%}
+    {% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+    {% endblock%}
 
 </body>
 
 </html>
-
-
-
